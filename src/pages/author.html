@@ -2,27 +2,45 @@
 <!-- DESCRIPTION: Mind Your Business by Chiaza Anokwu, plus companion resources — Money to Wealth, Business Audit Workbook, Goals & Growth Tracker, Revenue Reflection Journal. -->
 <!--CONTENT-->
 
-<section class="full-section wrap reveal" id="author">
-  <div class="head">
+<section class="full-section wrap" id="author">
+  <div class="head reveal">
     <h1>Author</h1>
-    <p>Writing built from personal experience, not theory.</p>
+    <p>I wrote about the issues we face alone yet communally so you can thrive.</p>
   </div>
-  <div class="author-block">
-    <img class="book-cover" src="/images/mind-your-business-cover.webp" width="100" height="130" alt="Cover of Mind Your Business by Chiaza Anokwu">
+  <div class="author-block reveal">
+    <div class="book-card" data-modal="mind-your-business" role="button" tabindex="0" aria-haspopup="dialog" aria-label="Open preview of Mind Your Business">
+      <img class="book-cover" src="/images/mind-your-business-cover.webp" width="200" height="200" alt="Cover of Mind Your Business by Chiaza Anokwu">
+    </div>
     <div>
       <h2>Mind Your Business</h2>
       <p style="font-style:italic;font-size:13px;color:var(--muted-2);margin:0 0 10px;">The Student Entrepreneur's Guide to Growth, Discipline, and Identity</p>
-      <p>I wrote Mind Your Business because most of what I learned about entrepreneurship as a student didn't come from theory — it came from getting things wrong in real time. It covers discipline, money mindset, branding, selling, all of it, but really it's about treating business as a lifestyle — one that teaches you resilience, perseverance, and the courage to keep showing up before you've figured it out.</p>
-      <a class="buy" href="https://nestuge.com/mindyourbusiness">Get the book on Nestuge — ₦2,000 →</a>
+      <p class="tag">Click the cover for more →</p>
     </div>
   </div>
-  <div class="companion-list">
+  <div class="companion-list reveal">
     <p class="subhead">Companion resources — same author, on Nestuge</p>
     <ul>
-      <li>Money to Wealth — reflection journal on understanding money and wealth</li>
-      <li>Business Audit Workbook — structured tool for evaluating business systems</li>
-      <li>Goals &amp; Growth Tracker — planner for intentional goals and habit tracking</li>
-      <li>Revenue Reflection Journal — guided resource for reviewing income patterns</li>
+      <li>Money to Wealth — my reflection journal on understanding money and wealth</li>
+      <li>Business Audit Workbook — my structured tool for evaluating business systems</li>
+      <li>Goals &amp; Growth Tracker — my planner for intentional goals and habit tracking</li>
+      <li>Revenue Reflection Journal — my guided resource for reviewing income patterns</li>
     </ul>
   </div>
 </section>
+
+<template id="modal-mind-your-business">
+  <img src="/images/mind-your-business-cover.webp" alt="Cover of Mind Your Business by Chiaza Anokwu">
+  <p class="tag">Book</p>
+  <h3>Mind Your Business</h3>
+  <p class="modal-desc">I wrote Mind Your Business because most of what I learned about entrepreneurship as a student didn't come from theory — it came from getting things wrong in real time. It covers discipline, money mindset, branding, selling, all of it, but really it's about treating business as a lifestyle — one that teaches you resilience, perseverance, and the courage to keep showing up before you've figured it out.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://nestuge.com/mindyourbusiness" target="_blank" rel="noopener noreferrer">Get the book on Nestuge →</a>
+  </div>
+</template>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-label="Project preview">
+    <button class="modal-close" id="modalClose" aria-label="Close preview" type="button">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>

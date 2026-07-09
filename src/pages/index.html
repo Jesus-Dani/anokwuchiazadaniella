@@ -18,7 +18,7 @@
     <div class="inner">
       <p class="eyebrow engineer">&lt;engineer/&gt;</p>
       <h2>Tech is how I solve what's in front of me.</h2>
-      <p>A client's checkout flow. An AI tool for career anxiety. Whatever the problem actually is.</p>
+      <p>An e-commerce platform for a paying client. An AI tool for career anxiety. Whatever the problem actually is.</p>
       <a class="btn engineer" href="/built.html">See built →</a>
     </div>
   </div>
@@ -26,42 +26,73 @@
   <div class="hint" id="hint" aria-hidden="true">move your cursor over this panel</div>
 </section>
 
-<section class="teaser-section wrap reveal" id="home-teasers">
-  <div class="teaser-row">
-    <h2>Ventures &amp; community</h2>
-    <a href="/ventures.html">see all →</a>
-  </div>
-  <div class="card-grid" style="margin-bottom:2.5rem;">
-    <a class="card" href="https://www.instagram.com/wealth.intentionalists" target="_blank" rel="noopener noreferrer">
-      <p class="title">The Wealth Intentionalists</p>
-      <span class="cat">Community founded</span>
-      <p class="desc">Helping young people build financial awareness and intentionality.</p>
-    </a>
-    <a class="card" href="https://www.instagram.com/kingdomwealthforum_?igsh=bTRmeHNueWttNXNq" target="_blank" rel="noopener noreferrer">
-      <p class="title">Kingdom Wealth Forum</p>
-      <span class="cat">Conference hosted</span>
-      <p class="desc">A conference exploring faith, purpose, and financial intentionality.</p>
-    </a>
-    <a class="card" href="https://www.instagram.com/chiaza.anokwu?igsh=Z2I2anI2a2VoYzA3&utm_source=qr" target="_blank" rel="noopener noreferrer">
-      <p class="title">Tech x Your Department</p>
-      <span class="cat">Instagram series</span>
-      <p class="desc">Exploring the intersection of tech and different academic and professional departments.</p>
-    </a>
-  </div>
-  <div class="teaser-row">
-    <h2>Built</h2>
-    <a href="/built.html">see all →</a>
-  </div>
-  <div class="card-grid">
-    <div class="card dark">
-      <p class="title">Shop With Mercy</p>
-      <span class="cat">Client site</span>
-      <p class="desc">Live e-commerce for a women's clothing brand, Paystack checkout.</p>
+<section class="teaser-section wrap" id="home-teasers">
+  <div class="reveal">
+    <div class="teaser-row">
+      <h2>Ventures &amp; community</h2>
+      <a href="/ventures.html">see all →</a>
     </div>
-    <div class="card dark">
-      <p class="title">The Dorothy Vaughan Effect</p>
-      <span class="cat">AI tool</span>
-      <p class="desc">Turns career anxiety into a concrete, personalized action plan.</p>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <a class="card" href="https://www.instagram.com/wealth.intentionalists" target="_blank" rel="noopener noreferrer">
+        <p class="title">The Wealth Intentionalists</p>
+        <span class="cat">Community founded</span>
+        <p class="desc">I help young people build financial awareness and intentionality.</p>
+      </a>
+      <a class="card" href="https://www.instagram.com/kingdomwealthforum_?igsh=bTRmeHNueWttNXNq" target="_blank" rel="noopener noreferrer">
+        <p class="title">Kingdom Wealth Forum</p>
+        <span class="cat">Conference hosted</span>
+        <p class="desc">I host a conference exploring faith, purpose, and financial intentionality.</p>
+      </a>
+      <a class="card" href="https://www.instagram.com/chiaza.anokwu?igsh=Z2I2anI2a2VoYzA3&utm_source=qr" target="_blank" rel="noopener noreferrer">
+        <p class="title">Tech x Your Department</p>
+        <span class="cat">Instagram series</span>
+        <p class="desc">I explore the intersection of tech and different academic and professional departments.</p>
+      </a>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="teaser-row">
+      <h2>Built</h2>
+      <a href="/built.html">see all →</a>
+    </div>
+    <div class="card-grid">
+      <div class="card dark" data-modal="shop-with-mercy">
+        <p class="title">Shop With Mercy</p>
+        <span class="cat">Client site</span>
+        <p class="desc">I built live e-commerce for a women's clothing brand, Paystack checkout.</p>
+      </div>
+      <div class="card dark" data-modal="dorothy-vaughan">
+        <p class="title">The Dorothy Vaughan Effect</p>
+        <span class="cat">AI tool</span>
+        <p class="desc">I built a tool that turns career anxiety into a concrete, personalized action plan.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<template id="modal-shop-with-mercy">
+  <img src="/images/built/shopwithmercy.webp" alt="Screenshot of the Shop With Mercy storefront">
+  <p class="tag">Client site</p>
+  <h3>Shop With Mercy</h3>
+  <p class="modal-desc">I built a live e-commerce site for a paying client, a women's clothing brand. Product categories, wishlist, search, and secure checkout via Paystack — a real store where customers browse, buy, and get delivery across Nigeria.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://shopwithmercywears.com" target="_blank" rel="noopener noreferrer">Visit site →</a>
+  </div>
+</template>
+
+<template id="modal-dorothy-vaughan">
+  <img src="/images/built/dorothy-vaughan.webp" alt="Screenshot of The Dorothy Vaughan Effect chat interface">
+  <p class="tag">AI tool</p>
+  <h3>The Dorothy Vaughan Effect</h3>
+  <p class="modal-desc">I built an AI tool that tells you where your career field is heading and the one skill to learn next, personalized to your role — turning career anxiety into a concrete action plan in one conversation. Originally built in a 48-hour hackathon, now live and public.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://dorathy-vaughan-effect.vercel.app" target="_blank" rel="noopener noreferrer">Try it →</a>
+  </div>
+</template>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-label="Project preview">
+    <button class="modal-close" id="modalClose" aria-label="Close preview" type="button">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>

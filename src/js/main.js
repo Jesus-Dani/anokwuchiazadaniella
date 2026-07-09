@@ -206,4 +206,15 @@
     modalClose.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
   }
+
+  // ---- whole-row external links (Ventures page) ----
+  document.querySelectorAll('[data-external-link]').forEach(function (trigger) {
+    var url = trigger.dataset.externalLink;
+    trigger.setAttribute('tabindex', '0');
+    trigger.setAttribute('role', 'link');
+    trigger.addEventListener('click', function () { window.open(url, '_blank', 'noopener,noreferrer'); });
+    trigger.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.open(url, '_blank', 'noopener,noreferrer'); }
+    });
+  });
 })();

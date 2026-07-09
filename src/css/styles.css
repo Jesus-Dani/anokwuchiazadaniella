@@ -81,6 +81,8 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
   text-align:center;
 }
 .card.dark{background:var(--ink);border:none;}
+.card[data-modal]{cursor:pointer;}
+.card[data-modal]:focus-visible{outline:2px solid var(--green);outline-offset:4px;}
 .card p.title{font-size:14px;font-weight:500;margin:0 0 8px;}
 .card.dark p.title{color:var(--bg);}
 .card span.cat{display:block;font-size:11px;color:var(--blue);margin-bottom:10px;}
@@ -116,13 +118,13 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 #built .proj .cat, .built-page .proj .cat{font-family:var(--mono);color:#3B6D11;}
 .proj p.body{font-size:13px;color:var(--muted);line-height:1.65;margin:8px 0 0;}
 
-/* built-page project preview frames */
-.built-page .proj{grid-template-columns:220px 1fr;align-items:start;}
+/* project preview frames — rendered inside the popup modal, not the main list */
 .proj-frame{
   width:100%;max-width:220px;aspect-ratio:3/4;
   border:1px solid var(--border);border-radius:10px;
   overflow:hidden;background:var(--white);
 }
+.modal-box .proj-frame{max-width:none;margin-bottom:18px;}
 .proj-frame .chrome{
   height:22px;display:flex;align-items:center;gap:5px;
   padding:0 10px;background:var(--bg);border-bottom:1px solid var(--border);
@@ -149,8 +151,8 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .wa-bubble .wa-time{display:block;font-size:8px;color:#8a8a8a;margin-top:2px;text-align:right;}
 
 /* project popup preview (Built page) */
-.proj[data-modal]{cursor:pointer;}
-.proj[data-modal]:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:8px;}
+.proj[data-modal], .proj[data-external-link]{cursor:pointer;}
+.proj[data-modal]:focus-visible, .proj[data-external-link]:focus-visible{outline:2px solid var(--blue);outline-offset:4px;border-radius:8px;}
 .modal-overlay{
   position:fixed;inset:0;z-index:100;
   background:rgba(10,10,10,0.6);
@@ -173,29 +175,11 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .modal-desc{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
 .modal-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
 
-@media (max-width:720px){
-  /* built-page project cards: unified bordered card, image spanning the
-     full card width up top, text below with padding inside the same card —
-     matching the reference's image-top/text-below card pattern. */
-  .built-page .proj{
-    grid-template-columns:1fr;
-    border:1px solid var(--border) !important;
-    border-radius:14px;
-    overflow:hidden;
-    padding:0;
-    margin-bottom:1.5rem;
-  }
-  .built-page .proj:last-child{margin-bottom:0;}
-  .proj-frame{
-    max-width:none;width:100%;aspect-ratio:16/10;
-    border:none;border-radius:0;
-  }
-  .built-page .proj-text{padding:1.1rem 1.25rem 1.4rem;}
-}
-
 /* author */
-.author-block{display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:center;padding:2rem 0;border-top:1px solid var(--border);}
-.book-cover{width:100px;height:130px;border-radius:4px;object-fit:cover;display:block;}
+.author-block{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;padding:2rem 0;border-top:1px solid var(--border);}
+.book-card{border:none;background:none;padding:0;cursor:pointer;display:block;border-radius:8px;}
+.book-card:focus-visible{outline:2px solid var(--blue);outline-offset:4px;}
+.book-cover{width:200px;height:200px;border-radius:8px;object-fit:cover;object-position:top center;display:block;}
 .author-block h2{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 8px;}
 .author-block p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px;max-width:440px;}
 .author-block .buy{font-size:12px;color:var(--blue);font-weight:500;}
@@ -241,7 +225,17 @@ footer{padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;}
 .footer-nav{display:flex;gap:14px;}
 .footer-nav a:hover, .footer-social a:hover{color:var(--ink);}
 
-/* scroll reveal — children stagger in (label, then headline, then body, then CTA) */
+/* scroll reveal — each .reveal block fades up independently as it enters
+   view (so long pages reveal progressively while scrolling, not all at
+   once near the top), and its own direct children stagger in too (label,
+   then headline, then body, then CTA). */
+.reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .5s cubic-bezier(.25,.1,.25,1), transform .5s cubic-bezier(.25,.1,.25,1);
+  will-change:opacity,transform;
+}
+.reveal.in{opacity:1;transform:none;}
 .reveal > *{
   opacity:0;
   transform:translateY(14px);

@@ -2,11 +2,11 @@
 <!-- DESCRIPTION: Get in touch with Chiaza Anokwu through socials or a direct message. -->
 <!--CONTENT-->
 
-<section class="full-section wrap reveal" id="contact">
-  <div class="contact-top">
+<section class="full-section wrap" id="contact">
+  <div class="contact-top reveal">
     <div>
       <h1 style="font-size:38px;">contact.</h1>
-      <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:360px;">Get in touch through socials, or send a message below.</p>
+      <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:360px;">Reach me through socials, or send a message below.</p>
       <div class="social-row">
         <a href="https://instagram.com/chiaza.anokwu">Instagram — @chiaza.anokwu</a>
         <a href="https://www.linkedin.com/in/chiaza-anokwu-8a6967413" rel="me">LinkedIn</a>
@@ -18,32 +18,34 @@
     </div>
   </div>
 
-  <p style="font-family:var(--serif);font-weight:600;font-size:16px;margin:0 0 1rem;">send a message</p>
-  <form class="card-form" name="contact-message" method="POST" novalidate data-web3forms data-success-target="contactFormSuccess" data-submit-label="Send message">
-    <input type="hidden" name="access_key" value="28adee91-71e6-4641-9a30-d8656a63aeee">
-    <input type="hidden" name="subject" value="New contact message from chiaza.anokwu site">
-    <input type="hidden" name="from_name" value="contact — message form">
-    <p class="hp-field" aria-hidden="true">
-      <label>Don't fill this out if you're human: <input name="botcheck" tabindex="-1" autocomplete="off"></label>
-    </p>
-    <div class="form-row">
-      <div class="field">
-        <label for="c-name">Name</label>
-        <input required id="c-name" name="name" type="text" placeholder="Your name">
-        <span class="error"></span>
+  <div class="reveal">
+    <p style="font-family:var(--serif);font-weight:600;font-size:16px;margin:0 0 1rem;">send a message</p>
+    <form class="card-form" name="contact-message" method="POST" novalidate data-web3forms data-success-target="contactFormSuccess" data-submit-label="Send message">
+      <input type="hidden" name="access_key" value="28adee91-71e6-4641-9a30-d8656a63aeee">
+      <input type="hidden" name="subject" value="New contact message from chiaza.anokwu site">
+      <input type="hidden" name="from_name" value="contact — message form">
+      <p class="hp-field" aria-hidden="true">
+        <label>Don't fill this out if you're human: <input name="botcheck" tabindex="-1" autocomplete="off"></label>
+      </p>
+      <div class="form-row">
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input required id="c-name" name="name" type="text" placeholder="Your name">
+          <span class="error"></span>
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input required id="c-email" name="email" type="email" placeholder="you@email.com">
+          <span class="error"></span>
+        </div>
       </div>
       <div class="field">
-        <label for="c-email">Email</label>
-        <input required id="c-email" name="email" type="email" placeholder="you@email.com">
+        <label for="c-message">Message</label>
+        <textarea required id="c-message" name="message" placeholder="Say hello"></textarea>
         <span class="error"></span>
       </div>
-    </div>
-    <div class="field">
-      <label for="c-message">Message</label>
-      <textarea required id="c-message" name="message" placeholder="Say hello"></textarea>
-      <span class="error"></span>
-    </div>
-    <button class="btn" type="submit">Send message</button>
-  </form>
-  <div class="form-success" id="contactFormSuccess" role="status">Thanks for reaching out — I'll get back to you soon.</div>
+      <button class="btn" type="submit">Send message</button>
+    </form>
+    <div class="form-success" id="contactFormSuccess" role="status">Thanks for reaching out — I'll get back to you soon.</div>
+  </div>
 </section>
