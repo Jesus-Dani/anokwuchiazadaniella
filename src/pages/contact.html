@@ -19,10 +19,12 @@
   </div>
 
   <p style="font-family:var(--serif);font-weight:600;font-size:16px;margin:0 0 1rem;">send a message</p>
-  <form class="card-form" name="contact-message" method="POST" novalidate data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-ajax data-success-target="contactFormSuccess" data-submit-label="Send message">
-    <input type="hidden" name="form-name" value="contact-message">
+  <form class="card-form" name="contact-message" method="POST" novalidate data-web3forms data-success-target="contactFormSuccess" data-submit-label="Send message">
+    <input type="hidden" name="access_key" value="28adee91-71e6-4641-9a30-d8656a63aeee">
+    <input type="hidden" name="subject" value="New contact message from chiaza.anokwu site">
+    <input type="hidden" name="from_name" value="contact — message form">
     <p class="hp-field" aria-hidden="true">
-      <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+      <label>Don't fill this out if you're human: <input name="botcheck" tabindex="-1" autocomplete="off"></label>
     </p>
     <div class="form-row">
       <div class="field">

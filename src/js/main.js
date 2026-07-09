@@ -121,13 +121,7 @@
     return valid;
   }
 
-  function encode(data) {
-    return Object.keys(data)
-      .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]); })
-      .join('&');
-  }
-
-  document.querySelectorAll('form[data-netlify-ajax]').forEach(function (form) {
+  document.querySelectorAll('form[data-web3forms]').forEach(function (form) {
     var successEl = document.getElementById(form.dataset.successTarget);
     var submitBtn = form.querySelector('button[type="submit"], button.btn');
 
@@ -145,12 +139,14 @@
 
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
 
-      fetch('/', {
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(data)
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
       })
-        .then(function () {
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          if (!result.success) throw new Error(result.message || 'submission failed');
           if (successEl) successEl.classList.add('show');
           form.reset();
           form.style.display = 'none';
