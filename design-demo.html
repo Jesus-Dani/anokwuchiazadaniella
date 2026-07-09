@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiaza Anokwu — design demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF7;
+    --ink:#0A0A0A;
+    --ink-soft:#1C1B18;
+    --muted:#5A594F;
+    --muted-2:#9A988C;
+    --border:#E4E2DC;
+    --blue:#2F5FFF;
+    --green:#C6FF3D;
+    --white:#FFFFFF;
+    --serif:'Fraunces',serif;
+    --sans:'Inter',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.5;}
+  section{scroll-margin-top:76px;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 2rem;}
+  .tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted-2);}
+
+  /* nav */
+  header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2rem;max-width:1080px;margin:0 auto;}
+  .logo{font-family:var(--serif);font-weight:600;font-size:16px;}
+  .nav-links{display:flex;gap:22px;font-size:13px;color:var(--muted);}
+  .nav-links a:hover{color:var(--ink);}
+
+  /* hero */
+  .hero-wrap{position:relative;height:420px;overflow:hidden;border-bottom:1px solid var(--border);cursor:pointer;}
+  .hero-half{position:absolute;inset:0;display:flex;align-items:center;}
+  .hero-founder{background:var(--bg);padding-left:8%;}
+  .hero-engineer{background:var(--ink);justify-content:flex-end;padding-right:8%;clip-path:inset(0 0 0 50%);}
+  .hero-founder .inner, .hero-engineer .inner{max-width:400px;}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin:0 0 14px;}
+  .eyebrow.engineer{color:var(--green);}
+  .hero-founder h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,42px);line-height:1.12;margin:0 0 16px;}
+  .hero-engineer h1{font-family:var(--mono);font-weight:500;font-size:clamp(22px,3vw,32px);color:var(--green);margin:0 0 16px;}
+  .hero-founder p{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 20px;}
+  .hero-engineer p{color:#B8B6AC;font-family:var(--mono);font-size:12.5px;line-height:1.7;margin:0 0 20px;}
+  .stat{font-size:14px;color:var(--muted);margin:0 0 22px;}
+  .stat b{color:var(--ink);font-weight:500;}
+  .btn{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;padding:11px 20px;border-radius:4px;border:none;cursor:pointer;font-family:var(--sans);}
+  .btn.outline{background:transparent;border:1px solid var(--border);color:var(--ink);}
+  .btn.engineer{background:var(--green);color:var(--ink);}
+  .orb{position:absolute;top:50%;left:50%;width:70px;height:70px;border-radius:50%;background:var(--border);border:3px solid var(--bg);transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:16px;color:var(--ink);pointer-events:none;z-index:5;}
+  .hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--muted-2);pointer-events:none;}
+
+  /* teasers */
+  .teaser-section{padding:3.5rem 0;border-bottom:1px solid var(--border);}
+  .teaser-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem;}
+  .teaser-row h2{font-family:var(--serif);font-weight:600;font-size:20px;margin:0;}
+  .teaser-row a{font-size:12px;color:var(--muted);}
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+  .card{border-radius:8px;padding:18px;border:1px solid var(--border);background:var(--white);}
+  .card.dark{background:var(--ink);border:none;}
+  .card p.title{font-size:14px;font-weight:500;margin:0 0 6px;}
+  .card.dark p.title{color:var(--bg);}
+  .card span.cat{font-size:11px;color:var(--blue);}
+  .card.dark span.cat{font-family:var(--mono);color:var(--green);}
+  .card p.desc{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.55;}
+  .card.dark p.desc{color:#B8B6AC;}
+
+  /* about */
+  .about-section{padding:4rem 0;border-bottom:1px solid var(--border);}
+  .about-section h2{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 20px;}
+  .bio{font-size:14px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:2.5rem;}
+  .split-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:2.5rem;}
+  .split-cols h3{font-family:var(--serif);font-weight:600;font-size:15px;margin:0 0 12px;}
+  .split-cols h3.mono{font-family:var(--mono);font-size:14px;}
+  .fact-list{font-size:13px;color:var(--muted);line-height:2.1;list-style:none;padding:0;margin:0;}
+  .fact-list.mono{font-family:var(--mono);font-size:12px;}
+  .subhead{font-size:13px;font-weight:500;color:var(--muted-2);margin:0 0 10px;text-transform:uppercase;letter-spacing:0.04em;}
+  .pill-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{font-size:12px;border:1px solid var(--border);border-radius:20px;padding:6px 14px;color:var(--muted);}
+
+  /* full project sections */
+  .full-section{padding:4rem 0;border-bottom:1px solid var(--border);}
+  .full-section .head{margin-bottom:2rem;}
+  .full-section h2{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 8px;}
+  .full-section .head p{font-size:13px;color:var(--muted);margin:0;max-width:520px;}
+  .proj{border-top:1px solid var(--border);padding:1.6rem 0;display:grid;grid-template-columns:200px 1fr;gap:24px;}
+  .proj:last-child{border-bottom:1px solid var(--border);}
+  .proj .name{font-family:var(--serif);font-weight:600;font-size:17px;margin:0 0 6px;}
+  .proj .cat{font-size:11px;color:var(--blue);}
+  #built .proj .cat{font-family:var(--mono);color:#3B6D11;}
+  .proj p.body{font-size:13px;color:var(--muted);line-height:1.65;margin:8px 0 0;}
+
+  /* author */
+  .author-block{display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:center;padding:2rem 0;border-top:1px solid var(--border);}
+  .book-cover{width:100px;height:130px;background:var(--ink);border-radius:4px;}
+  .author-block h3{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 8px;}
+  .author-block p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px;max-width:440px;}
+  .author-block .buy{font-size:12px;color:var(--blue);font-weight:500;}
+  .companion-list{padding:1.5rem 0;border-top:1px solid var(--border);}
+  .companion-list .subhead{margin-bottom:12px;}
+  .companion-list ul{margin:0;padding:0;list-style:none;font-size:13px;color:var(--muted);line-height:2;}
+
+  /* sessions */
+  .sculpt-row{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--border);}
+  .sculpt-row:last-child{border-bottom:1px solid var(--border);}
+  .sculpt-letter{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--blue);}
+  .sculpt-row .sname{font-size:13px;font-weight:500;}
+  .sculpt-row .sdesc{font-size:13px;color:var(--muted);}
+
+  /* forms */
+  form.card-form{max-width:460px;margin-top:1rem;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px;}
+  .field label{font-size:11px;color:var(--muted);display:block;margin-bottom:4px;}
+  .field input, .field textarea{width:100%;border:1px solid var(--border);border-radius:4px;background:var(--white);font-family:var(--sans);font-size:13px;padding:8px 10px;}
+  .field textarea{min-height:80px;resize:vertical;}
+  .note{font-size:11px;color:var(--muted-2);margin-top:10px;}
+
+  /* contact split motif */
+  .contact-top{display:grid;grid-template-columns:1fr 160px;gap:24px;align-items:start;margin-bottom:2.5rem;}
+  .motif{position:relative;height:150px;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;}
+  .motif .left{background:var(--bg);border:1px solid var(--border);}
+  .motif .right{background:var(--ink);}
+  .social-row{display:flex;gap:26px;font-size:13px;margin-top:18px;}
+
+  footer{padding:2rem 0;}
+  .footer-inner{display:flex;justify-content:space-between;font-size:12px;color:var(--muted-2);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+    .hero-engineer{transition:none;}
+  }
+  @media (max-width:720px){
+    .split-cols, .card-grid, .proj, .author-block, .contact-top, .form-row{grid-template-columns:1fr;}
+    .hero-half{padding:6% !important;}
+    .nav-links{gap:12px;font-size:11px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top">chiaza.</a>
+    <nav class="nav-links">
+      <a href="#about">about</a>
+      <a href="#ventures">ventures</a>
+      <a href="#built">built</a>
+      <a href="#author">author</a>
+      <a href="#sessions">sessions</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero-wrap" id="hero">
+    <div class="hero-half hero-founder">
+      <div class="inner">
+        <p class="eyebrow">Anokwu Chiaza Daniella</p>
+        <h1>I build businesses — and I engineer the solutions around me.</h1>
+        <p class="stat">Founder-builder · <b><span id="statNum">0</span>+</b> in vendor sales via RUN Marketplace</p>
+        <div style="display:flex;gap:12px;">
+          <a class="btn" href="#built">View my work</a>
+          <a class="btn outline" href="#ventures">See ventures</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-half hero-engineer" id="engineerPanel">
+      <div class="inner">
+        <p class="eyebrow engineer">&lt;engineer/&gt;</p>
+        <h1>Tech is how I solve what's in front of me.</h1>
+        <p>A client's checkout flow. An AI tool for career anxiety. Whatever the problem actually is.</p>
+        <a class="btn engineer" href="#built">See built →</a>
+      </div>
+    </div>
+    <div class="orb" id="orb">CD</div>
+    <div class="hint" id="hint">move your cursor over this panel</div>
+  </section>
+
+  <!-- HOME TEASERS -->
+  <section class="teaser-section wrap reveal" id="home-teasers">
+    <div class="teaser-row">
+      <h2>Ventures &amp; community</h2>
+      <a href="#ventures">see all →</a>
+    </div>
+    <div class="card-grid" style="margin-bottom:2.5rem;">
+      <div class="card">
+        <p class="title">RUN Marketplace</p>
+        <span class="cat">E-commerce community</span>
+        <p class="desc">4,000+ members, 500+ active sellers — built and scaled entirely through WhatsApp.</p>
+      </div>
+      <div class="card">
+        <p class="title">The Wealth Intentionalists</p>
+        <span class="cat">Community founded</span>
+        <p class="desc">Helping young people build financial awareness and intentionality.</p>
+      </div>
+    </div>
+    <div class="teaser-row">
+      <h2>Built</h2>
+      <a href="#built">see all →</a>
+    </div>
+    <div class="card-grid">
+      <div class="card dark">
+        <p class="title">Shop With Mercy</p>
+        <span class="cat">Client site</span>
+        <p class="desc">Live e-commerce for a women's clothing brand, Paystack checkout.</p>
+      </div>
+      <div class="card dark">
+        <p class="title">The Dorothy Vaughan Effect</p>
+        <span class="cat">AI tool</span>
+        <p class="desc">Turns career anxiety into a concrete, personalized action plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section wrap reveal" id="about">
+    <h2>About</h2>
+    <p class="bio">Anokwu Chiaza Daniella, born 2007. 400-level Computer Engineering student at Redeemer's University. Began her entrepreneurial journey around five years ago. RUN Marketplace and Shop With Mercy exist because she can do both sides at once — founder and engineer aren't separate tracks, they're the same instinct pointed in two directions.</p>
+
+    <div class="split-cols">
+      <div>
+        <h3>Part founder</h3>
+        <ul class="fact-list">
+          <li>Ventures and community building</li>
+          <li>Growth and operations</li>
+          <li>Financial literacy advocacy</li>
+          <li>Public speaking</li>
+          <li>Saying yes before knowing how</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="mono">Part engineer</h3>
+        <ul class="fact-list mono">
+          <li>Full-stack builds</li>
+          <li>AI tooling</li>
+          <li>Paystack + checkout flows</li>
+          <li>Debugging past midnight</li>
+          <li>Shipping over perfecting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-bottom:2.5rem;">
+      <p class="subhead">Awards &amp; credentials</p>
+      <div class="pill-list">
+        <span class="pill">Entrepreneur of the Year, 2024 — Skilled Student Awards</span>
+        <span class="pill">Diploma in Marketing Management — Alison</span>
+        <span class="pill">Certified Business Coach</span>
+        <span class="pill">Radio guest, Radio One 103.5FM (Sept 2024)</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="subhead">What I think about (ongoing, not a finished list)</p>
+      <ul class="fact-list">
+        <li>Industrial dynasties — the Rockefellers, Vanderbilts, and the systems they left behind</li>
+        <li>Roman Empire and Ethiopian history documentaries</li>
+        <li>Colonialism and the transatlantic slave trade</li>
+        <li>Podcasts: Diary of a CEO, Philosophize This</li>
+        <li>AI's impact on society</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- VENTURES -->
+  <section class="full-section wrap reveal" id="ventures">
+    <div class="head">
+      <h2>Ventures &amp; community</h2>
+      <p>Founder-side work — communities, movements, and events built for other people, not just for me.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">The Wealth Intentionalists</p><span class="cat">Community founded</span></div>
+      <p class="body">A community helping young people build financial awareness and intentionality.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">The 10-Year Plan</p><span class="cat">Movement, pioneer</span></div>
+      <p class="body">Encouraging young people to devote a decade to building the systems and structures that anchor a purposeful, sustained life.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">Kingdom Wealth Forum</p><span class="cat">Conference hosted</span></div>
+      <p class="body">A conference exploring faith, purpose, and financial intentionality.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">Pop-up markets</p><span class="cat">Events hosted</span></div>
+      <p class="body">Markets hosted for student entrepreneurs to sell directly to their campus community.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">Business masterclass</p><span class="cat">3-day program</span></div>
+      <p class="body">Helped 50+ businesses gain clarity on their offer, audience, and next steps.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">Tech x Your Department</p><span class="cat">Instagram series</span></div>
+      <p class="body">Exploring the intersection of tech and different academic and professional departments — helping people find clarity in a fast-moving, tech-driven world.</p>
+    </div>
+  </section>
+
+  <!-- BUILT -->
+  <section class="full-section wrap reveal" id="built">
+    <div class="head">
+      <h2>Built</h2>
+      <p>Engineer-side work — live products, in order of paying-client and scale credibility.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">RUN Marketplace</p><span class="cat">E-commerce community</span></div>
+      <p class="body">Founded in 2022, an e-commerce community built and run for student entrepreneurs at Redeemer's University — operations and growth handled directly, connecting sellers with buyers on campus. 4,000+ members, 500+ active sellers, ₦600M+ in vendor sales, built and scaled entirely through WhatsApp.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">Shop With Mercy</p><span class="cat">Client site — shopwithmercywears.com</span></div>
+      <p class="body">A live e-commerce site built for a paying client, a women's clothing brand. Product categories, wishlist, search, and secure checkout via Paystack — a real store where customers browse, buy, and get delivery across Nigeria.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">The Dorothy Vaughan Effect</p><span class="cat">AI tool — dorathy-vaughan-effect.vercel.app</span></div>
+      <p class="body">An AI tool that tells you where your career field is heading and the one skill to learn next, personalized to your role — turning career anxiety into a concrete action plan in one conversation. Originally built in a 48-hour hackathon, now live and public.</p>
+    </div>
+    <div class="proj">
+      <div><p class="name">beadrev</p><span class="cat">Storefront demo — beadrev.netlify.app</span></div>
+      <p class="body">A storefront demo project — a project built, nothing more, nothing less.</p>
+    </div>
+  </section>
+
+  <!-- AUTHOR -->
+  <section class="full-section wrap reveal" id="author">
+    <div class="head">
+      <h2>Author</h2>
+      <p>Writing built from personal experience, not theory.</p>
+    </div>
+    <div class="author-block">
+      <div class="book-cover"></div>
+      <div>
+        <h3>Mind Your Business</h3>
+        <p>The Student Entrepreneur's Guide to Growth, Discipline, and Identity — motivation, discipline, branding, selling, money mindset, collaboration, and growth/identity.</p>
+        <a class="buy" href="https://nestuge.com/mindyourbusiness">Get the book on Nestuge — ₦2,000 →</a>
+      </div>
+    </div>
+    <div class="companion-list">
+      <p class="subhead">Companion resources</p>
+      <ul>
+        <li>Money to Wealth — reflection journal on understanding money and wealth</li>
+        <li>Business Audit Workbook — structured tool for evaluating business systems</li>
+        <li>Goals &amp; Growth Tracker — planner for intentional goals and habit tracking</li>
+        <li>Revenue Reflection Journal — guided resource for reviewing income patterns</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SESSIONS -->
+  <section class="full-section wrap reveal" id="sessions">
+    <span class="tag">sessions page</span>
+    <h2 style="margin-top:10px;">clarity with chi.</h2>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:460px;margin:0 0 18px;">I help you go over your ideas and options — truthfully, not gently — so you land on the most logical, beneficial decision for where you're actually trying to go.</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:2rem;">
+      <span>45–60 minutes</span><span>·</span><span>one on one</span><span>·</span><span>bring a real decision, not a hypothetical</span>
+    </div>
+
+    <p class="tag" style="margin-bottom:6px;">how it works</p>
+    <p style="font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 4px;">the SCULPT framework</p>
+    <div class="sculpt-row"><span class="sculpt-letter">S</span><div><span class="sname">Self — </span><span class="sdesc">get honest about what you're actually good at, and what this really requires of you.</span></div></div>
+    <div class="sculpt-row"><span class="sculpt-letter">C</span><div><span class="sname">Clarify — </span><span class="sdesc">define the idea or decision precisely enough that it can actually be tested.</span></div></div>
+    <div class="sculpt-row"><span class="sculpt-letter">U</span><div><span class="sname">Unpack — </span><span class="sdesc">walk the whole thing start to finish and find where it actually breaks.</span></div></div>
+    <div class="sculpt-row"><span class="sculpt-letter">L</span><div><span class="sname">Locate — </span><span class="sdesc">define what success actually looks like, in specific, concrete terms.</span></div></div>
+    <div class="sculpt-row"><span class="sculpt-letter">P</span><div><span class="sname">Pinpoint — </span><span class="sdesc">decide exactly what you're measuring, and what would tell you to change course.</span></div></div>
+    <div class="sculpt-row"><span class="sculpt-letter">T</span><div><span class="sname">Trajectory — </span><span class="sdesc">see where this leads, and what it makes possible next.</span></div></div>
+
+    <p style="font-family:var(--serif);font-weight:600;font-size:16px;margin:2rem 0 0;">request clarity with chi</p>
+    <form class="card-form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="field"><label>What are you working through?</label><textarea placeholder="A business idea, a decision, a skill you're building..."></textarea></div>
+      <button class="btn" style="margin-top:14px;">Request clarity with chi</button>
+      <p class="note">I'll reply within a few days to confirm a time.</p>
+    </form>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="full-section wrap reveal" id="contact">
+    <div class="contact-top">
+      <div>
+        <h2 style="font-size:38px;">contact.</h2>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;max-width:360px;">Get in touch through socials, or send a message below.</p>
+        <div class="social-row">
+          <span>Instagram — @chiaza.anokwu</span>
+          <span>LinkedIn</span>
+          <span>Email</span>
+        </div>
+      </div>
+      <div class="motif">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="orb" style="width:40px;height:40px;font-size:11px;">CD</div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--serif);font-weight:600;font-size:16px;margin:0 0 1rem;">send a message</p>
+    <form class="card-form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="field"><label>Name</label><input type="text" placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="field"><label>Message</label><textarea placeholder="Say hello"></textarea></div>
+      <button class="btn" style="margin-top:14px;">Send message</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="footer-inner">
+    <span>© 2026 Chiaza Anokwu</span>
+    <span>Instagram · LinkedIn · Email</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // hero split hover
+  var wrap = document.getElementById('hero');
+  var panel = document.getElementById('engineerPanel');
+  var orb = document.getElementById('orb');
+  var hint = document.getElementById('hint');
+  if(!reduceMotion){
+    panel.style.transition = 'clip-path .18s ease-out';
+    orb.style.transition = 'left .18s ease-out';
+    wrap.addEventListener('mousemove', function(e){
+      var rect = wrap.getBoundingClientRect();
+      var pct = ((e.clientX - rect.left) / rect.width) * 100;
+      pct = Math.max(28, Math.min(72, pct));
+      panel.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+      orb.style.left = pct + '%';
+      hint.style.opacity = '0';
+    });
+    wrap.addEventListener('mouseleave', function(){
+      panel.style.clipPath = 'inset(0 0 0 50%)';
+      orb.style.left = '50%';
+      hint.style.opacity = '1';
+    });
+  } else {
+    hint.style.display = 'none';
+  }
+
+  // stat counter
+  var statEl = document.getElementById('statNum');
+  var target = 600;
+  if(reduceMotion){
+    statEl.textContent = '₦' + target + 'M';
+  } else {
+    var start = null;
+    var duration = 800;
+    function step(ts){
+      if(!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var val = Math.round(progress * target);
+      statEl.textContent = '₦' + val + 'M';
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    var statObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          requestAnimationFrame(step);
+          statObserver.disconnect();
+        }
+      });
+    }, {threshold:0.4});
+    statObserver.observe(document.getElementById('hero'));
+  }
+
+  // scroll reveals
+  var revealEls = document.querySelectorAll('.reveal');
+  if(reduceMotion){
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(function(el){ revealObserver.observe(el); });
+  }
+})();
+</script>
+
+</body>
+</html>

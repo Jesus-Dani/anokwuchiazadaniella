@@ -1,0 +1,56 @@
+<!-- TITLE: Clarity with Chi — Sessions -->
+<!-- DESCRIPTION: Request a one-on-one clarity session with Chiaza Anokwu, structured around the SCULPT framework, for a business idea, a life decision, or a skill you're building. -->
+<!--CONTENT-->
+
+<section class="full-section wrap reveal" id="sessions">
+  <span class="tag">sessions page</span>
+  <h1 style="font-family:var(--serif);font-weight:600;font-size:32px;margin:10px 0 0;">clarity with chi.</h1>
+  <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:460px;margin:14px 0 18px;">The idea stage is the most sensitive one, and that's exactly when clarity matters most. I help you go over your ideas and options honestly, so you land on the most logical, beneficial decision for where you're actually trying to go. It doesn't need to be figured out yet, I believe ideas hold the future we'll all exist in, which is exactly why this stage gets real care here.</p>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:2rem;">
+    <span>45–60 minutes</span><span>·</span><span>one on one</span><span>·</span><span>your light bulb moment</span>
+  </div>
+
+  <p class="tag" style="margin-bottom:10px;">what a session can be about</p>
+  <ul class="lens-list">
+    <li><b>A business or income idea</b> — something you're weighing whether to start or take further</li>
+    <li><b>A personal goal or life decision</b> — you know things should shift, you just haven't mapped out how to go about it yet</li>
+    <li><b>A skill you're building</b> — or trying to figure out which one actually fits where you're headed</li>
+  </ul>
+
+  <p class="tag" style="margin-bottom:6px;">how it works</p>
+  <p style="font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 4px;">the SCULPT framework</p>
+  <div class="sculpt-row"><span class="sculpt-letter">S</span><div><span class="sname">Self — </span><span class="sdesc">get honest about what you're actually good at, and what this really requires of you.</span></div></div>
+  <div class="sculpt-row"><span class="sculpt-letter">C</span><div><span class="sname">Clarify — </span><span class="sdesc">define the idea or decision precisely enough that it can actually be tested.</span></div></div>
+  <div class="sculpt-row"><span class="sculpt-letter">U</span><div><span class="sname">Unpack — </span><span class="sdesc">walk the whole thing start to finish and find where it actually breaks.</span></div></div>
+  <div class="sculpt-row"><span class="sculpt-letter">L</span><div><span class="sname">Locate — </span><span class="sdesc">define what success actually looks like, in specific, concrete terms.</span></div></div>
+  <div class="sculpt-row"><span class="sculpt-letter">P</span><div><span class="sname">Pinpoint — </span><span class="sdesc">decide exactly what you're measuring, and what would tell you to change course.</span></div></div>
+  <div class="sculpt-row"><span class="sculpt-letter">T</span><div><span class="sname">Trajectory — </span><span class="sdesc">see where this leads, and what it makes possible next.</span></div></div>
+
+  <p style="font-family:var(--serif);font-weight:600;font-size:16px;margin:2rem 0 0;">request clarity with chi</p>
+  <form class="card-form" name="session-request" method="POST" novalidate data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-ajax data-success-target="sessionFormSuccess" data-submit-label="Request clarity with chi">
+    <input type="hidden" name="form-name" value="session-request">
+    <p class="hp-field" aria-hidden="true">
+      <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+    </p>
+    <div class="form-row">
+      <div class="field">
+        <label for="s-name">Name</label>
+        <input required id="s-name" name="name" type="text" placeholder="Your name">
+        <span class="error"></span>
+      </div>
+      <div class="field">
+        <label for="s-email">Email</label>
+        <input required id="s-email" name="email" type="email" placeholder="you@email.com">
+        <span class="error"></span>
+      </div>
+    </div>
+    <div class="field">
+      <label for="s-message">What are you working through?</label>
+      <textarea required id="s-message" name="message" placeholder="A business idea, a decision, a skill you're building..."></textarea>
+      <span class="error"></span>
+    </div>
+    <button class="btn" type="submit">Request clarity with chi</button>
+    <p class="note">I'll reply within a few days to confirm a time.</p>
+  </form>
+  <div class="form-success" id="sessionFormSuccess" role="status">Thanks — I've got your request and will reply within a few days to confirm a time.</div>
+</section>
