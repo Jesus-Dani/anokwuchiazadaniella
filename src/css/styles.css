@@ -63,8 +63,9 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--muted-2);pointer-events:none;}
 
 /* teasers */
-.teaser-section{padding:8.5rem 0 4rem;border-bottom:1px solid var(--border);}
+.teaser-section{padding:6.5rem 0 4rem;border-bottom:1px solid var(--border);}
 .teaser-row{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem;}
+.teaser-section .reveal:first-child .teaser-row{margin-top:2rem;}
 .teaser-row h2{font-family:var(--serif);font-weight:600;font-size:20px;margin:0;}
 .teaser-row a{font-size:12px;color:var(--muted);}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
