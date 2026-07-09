@@ -98,7 +98,7 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .bio{font-size:14px;color:var(--muted);max-width:600px;line-height:1.7;margin-bottom:2.5rem;}
 .bio p{margin:0 0 1em;}
 .bio p:last-child{margin-bottom:0;}
-.split-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:2.5rem;}
+.split-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:2.5rem;text-align:center;}
 .split-cols h3{font-family:var(--serif);font-weight:600;font-size:15px;margin:0 0 12px;}
 .split-cols h3.mono{font-family:var(--mono);font-size:14px;}
 .fact-list{font-size:13px;color:var(--muted);line-height:2.1;list-style:none;padding:0;margin:0;}
@@ -109,6 +109,7 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 
 /* full project sections */
 .full-section{padding:4rem 0;}
+#sessions > .reveal + .reveal{margin-top:2.25rem;}
 .full-section .head{margin-bottom:2rem;}
 .full-section h2, .full-section h1{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 8px;}
 .full-section .head p{font-size:13px;color:var(--muted);margin:0;max-width:520px;}
@@ -189,13 +190,13 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .companion-list ul{margin:0;padding:0;list-style:none;font-size:13px;color:var(--muted);line-height:2;}
 
 /* sessions */
-.sculpt-row{display:grid;grid-template-columns:36px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--border);}
+.sculpt-row{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--border);align-items:baseline;}
 .sculpt-row:last-child{border-bottom:1px solid var(--border);}
-.sculpt-letter{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--blue);}
-.sculpt-row .sname{font-size:13px;font-weight:500;}
-.sculpt-row .sdesc{font-size:13px;color:var(--muted);}
-.lens-list{font-size:13px;color:var(--muted);line-height:2;list-style:none;padding:0;margin:0 0 2rem;}
-.lens-list b{color:var(--ink);font-weight:500;}
+.sculpt-letter{font-family:var(--serif);font-weight:600;font-size:34px;color:var(--blue);line-height:1;}
+.sculpt-row .sname{font-size:15px;font-weight:600;}
+.sculpt-row .sdesc{font-size:13.5px;color:var(--muted);line-height:1.6;}
+.lens-list{font-size:13.5px;color:var(--muted);line-height:2.2;list-style:none;padding:0;margin:0 0 2rem;}
+.lens-list b{color:var(--ink);font-weight:600;}
 
 /* forms */
 form.card-form{max-width:460px;margin-top:1rem;}
