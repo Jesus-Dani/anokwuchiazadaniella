@@ -157,4 +157,53 @@
         });
     });
   });
+
+  // ---- project popup previews (Built page) ----
+  var modalOverlay = document.getElementById('modalOverlay');
+  if (modalOverlay) {
+    var modalBox = document.getElementById('modalBox');
+    var modalContent = document.getElementById('modalContent');
+    var modalClose = document.getElementById('modalClose');
+    var lastFocused = null;
+
+    function trapFocus(e) {
+      if (e.key === 'Escape') { closeModal(); return; }
+      if (e.key !== 'Tab') return;
+      var focusable = modalBox.querySelectorAll('a[href], button');
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    function openModal(key) {
+      var tpl = document.getElementById('modal-' + key);
+      if (!tpl) return;
+      modalContent.innerHTML = '';
+      modalContent.appendChild(tpl.content.cloneNode(true));
+      lastFocused = document.activeElement;
+      modalOverlay.hidden = false;
+      modalClose.focus();
+      document.addEventListener('keydown', trapFocus);
+    }
+
+    function closeModal() {
+      modalOverlay.hidden = true;
+      document.removeEventListener('keydown', trapFocus);
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('[data-modal]').forEach(function (trigger) {
+      trigger.setAttribute('tabindex', '0');
+      trigger.setAttribute('role', 'button');
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.addEventListener('click', function () { openModal(trigger.dataset.modal); });
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(trigger.dataset.modal); }
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function (e) { if (e.target === modalOverlay) closeModal(); });
+  }
 })();

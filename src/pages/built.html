@@ -5,9 +5,9 @@
 <section class="full-section wrap reveal built-page" id="built">
   <div class="head">
     <h1>Built</h1>
-    <p>Engineer-side work — live products, in order of paying-client and scale credibility.</p>
+    <p>Engineer-side work — live products, in order of paying-client and scale credibility. Click any project for a quick preview.</p>
   </div>
-  <div class="proj">
+  <div class="proj" data-modal="run-marketplace">
     <div class="proj-frame">
       <div class="chrome"><span></span><span></span><span></span></div>
       <div class="wa-mock" role="img" aria-label="Mock-up of a WhatsApp conversation between a RUN Marketplace seller and buyer">
@@ -32,37 +32,86 @@
       <p class="body">Founded in 2022, an e-commerce community built and run for student entrepreneurs at Redeemer's University — operations and growth handled directly, connecting sellers with buyers on campus. 4,000+ members, 500+ active sellers, ₦600M+ in vendor sales, built and scaled entirely through WhatsApp. Mock-up above, since the real product lives inside WhatsApp chats, not a website.</p>
     </div>
   </div>
-  <div class="proj">
+  <div class="proj" data-modal="shop-with-mercy">
     <div class="proj-frame">
       <div class="chrome"><span></span><span></span><span></span></div>
       <img src="/images/built/shopwithmercy.webp" alt="Screenshot of the Shop With Mercy storefront, showing a product grid on a dark olive-green background" width="220" height="293" loading="lazy">
     </div>
     <div class="proj-text">
       <p class="name">Shop With Mercy</p>
-      <span class="cat">Client site — <a href="https://shopwithmercywears.com">shopwithmercywears.com</a></span>
+      <span class="cat">Client site — shopwithmercywears.com</span>
       <p class="body">A live e-commerce site built for a paying client, a women's clothing brand. Product categories, wishlist, search, and secure checkout via Paystack — a real store where customers browse, buy, and get delivery across Nigeria.</p>
     </div>
   </div>
-  <div class="proj">
+  <div class="proj" data-modal="dorothy-vaughan">
     <div class="proj-frame">
       <div class="chrome"><span></span><span></span><span></span></div>
       <img src="/images/built/dorothy-vaughan.webp" alt="Screenshot of The Dorothy Vaughan Effect chat interface, with a welcome message and a prompt to type start" width="220" height="293" loading="lazy">
     </div>
     <div class="proj-text">
       <p class="name">The Dorothy Vaughan Effect</p>
-      <span class="cat">AI tool — <a href="https://dorathy-vaughan-effect.vercel.app">dorathy-vaughan-effect.vercel.app</a></span>
+      <span class="cat">AI tool — dorathy-vaughan-effect.vercel.app</span>
       <p class="body">An AI tool that tells you where your career field is heading and the one skill to learn next, personalized to your role — turning career anxiety into a concrete action plan in one conversation. Originally built in a 48-hour hackathon, now live and public.</p>
     </div>
   </div>
-  <div class="proj">
+  <div class="proj" data-modal="beadrev">
     <div class="proj-frame">
       <div class="chrome"><span></span><span></span><span></span></div>
       <img src="/images/built/beadrev.webp" alt="Screenshot of the beadrev storefront, showing bracelets stacked on a wrist against a cream background" width="220" height="293" loading="lazy">
     </div>
     <div class="proj-text">
       <p class="name">beadrev</p>
-      <span class="cat">Founded + built — <a href="https://beadrev.netlify.app">beadrev.netlify.app</a></span>
+      <span class="cat">Founded + built — beadrev.netlify.app</span>
       <p class="body">A storefront demo project — a project built, nothing more, nothing less.</p>
     </div>
   </div>
 </section>
+
+<!-- popup preview content, cloned into the modal on click -->
+<template id="modal-run-marketplace">
+  <p class="tag">RUN Marketplace</p>
+  <h3>Founded + built · 2022</h3>
+  <p class="modal-stat">4,000+ members · 500+ active sellers · ₦600M+ in vendor sales</p>
+  <p class="modal-desc">An e-commerce community for student entrepreneurs at Redeemer's University, run entirely through WhatsApp — no website, just direct seller-to-buyer chats.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://wa.me/2348035954212" target="_blank" rel="noopener noreferrer">Message to join (Redeemer's University) →</a>
+    <a class="btn outline" href="https://www.instagram.com/run_marketplace" target="_blank" rel="noopener noreferrer">Follow on Instagram →</a>
+  </div>
+</template>
+
+<template id="modal-shop-with-mercy">
+  <img src="/images/built/shopwithmercy.webp" alt="Screenshot of the Shop With Mercy storefront">
+  <p class="tag">Client site</p>
+  <h3>Shop With Mercy</h3>
+  <p class="modal-desc">A live e-commerce site built for a paying client, a women's clothing brand. Product categories, wishlist, search, and secure checkout via Paystack.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://shopwithmercywears.com" target="_blank" rel="noopener noreferrer">Visit site →</a>
+  </div>
+</template>
+
+<template id="modal-dorothy-vaughan">
+  <img src="/images/built/dorothy-vaughan.webp" alt="Screenshot of The Dorothy Vaughan Effect chat interface">
+  <p class="tag">AI tool</p>
+  <h3>The Dorothy Vaughan Effect</h3>
+  <p class="modal-desc">Tells you where your career field is heading and the one skill to learn next — turning career anxiety into a concrete action plan in one conversation.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://dorathy-vaughan-effect.vercel.app" target="_blank" rel="noopener noreferrer">Try it →</a>
+  </div>
+</template>
+
+<template id="modal-beadrev">
+  <img src="/images/built/beadrev.webp" alt="Screenshot of the beadrev storefront">
+  <p class="tag">Founded + built</p>
+  <h3>beadrev</h3>
+  <p class="modal-desc">A storefront demo project — a project built, nothing more, nothing less.</p>
+  <div class="modal-actions">
+    <a class="btn" href="https://beadrev.netlify.app" target="_blank" rel="noopener noreferrer">Visit site →</a>
+  </div>
+</template>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-label="Project preview">
+    <button class="modal-close" id="modalClose" aria-label="Close preview" type="button">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
