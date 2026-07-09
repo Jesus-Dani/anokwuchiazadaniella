@@ -19,6 +19,14 @@
       var open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
+    document.addEventListener('click', function (e) {
+      var isOpen = links.classList.contains('open');
+      var clickedInsideMenu = links.contains(e.target) || toggle.contains(e.target);
+      if (isOpen && !clickedInsideMenu) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   // ---- hero split interaction ----
