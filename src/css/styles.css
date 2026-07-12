@@ -44,7 +44,7 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 /* hero — three columns: founder text | portrait | engineer text, one plain background */
 .hero-wrap{
   display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.25rem;
-  padding:3.5rem 0;border-bottom:1px solid var(--border);
+  max-width:1080px;margin:0 auto;padding:3.5rem 2rem;border-bottom:1px solid var(--border);
 }
 .hero-col{max-width:320px;}
 .hero-founder{justify-self:end;}
@@ -66,6 +66,21 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .btn{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;padding:11px 20px;border-radius:4px;border:none;cursor:pointer;font-family:var(--sans);}
 .btn.outline{background:transparent;border:1px solid var(--border);color:var(--ink);}
 .btn.engineer{background:var(--green);color:var(--ink);}
+
+/* hero on mobile: stack into a single column (founder, photo, engineer follow
+   natural DOM order), full-width blocks with real vertical spacing, and a
+   clear three-tier type hierarchy per block — label > tagline > stat. */
+@media (max-width:768px){
+  .hero-wrap{grid-template-columns:1fr;gap:0;padding:28px 22px;}
+  .hero-col, .hero-founder, .hero-engineer{max-width:none;justify-self:stretch;}
+  .hero-founder{margin-bottom:32px;}
+  .hero-photo{margin-bottom:32px;}
+  .hero-photo img{max-width:220px;margin:0 auto;}
+
+  .hero-wrap .eyebrow{font-size:22px;font-weight:700;letter-spacing:0.01em;margin-bottom:12px;}
+  .hero-founder h1, .hero-engineer h2{font-size:17px;line-height:1.4;margin-bottom:10px;}
+  .hero-wrap .stat, .hero-engineer p{font-size:12px;line-height:1.4;margin:0;}
+}
 
 /* teasers */
 .teaser-section{padding:6.5rem 0 4rem;border-bottom:1px solid var(--border);}
@@ -335,19 +350,6 @@ footer{padding:2rem 0;border-top:1px solid var(--border);margin-top:2rem;}
   .nav-links{gap:12px;font-size:11px;}
   .footer-inner{flex-direction:column;align-items:flex-start;}
   .motif{width:160px;margin-top:1.25rem;}
-
-  /* hero: keep the three-column layout at mobile (text | photo | text) rather
-     than stacking — columns just get much narrower, so type sizes down hard
-     to stay legible within them. */
-  .hero-wrap{gap:0.5rem;padding:1.25rem 0;align-items:center;}
-  .hero-col{max-width:none;}
-  .hero-photo img{max-width:150px;}
-  .eyebrow{font-size:9.5px;margin-bottom:6px;letter-spacing:0.04em;}
-  .hero-founder h1{font-size:14px;line-height:1.25;margin-bottom:8px;}
-  .stat{font-size:9.5px;line-height:1.4;}
-  .hero-engineer h2{font-size:12px;line-height:1.3;margin-bottom:6px;}
-  .hero-engineer p{font-size:8.5px;line-height:1.5;}
-}
 
 @media (max-width:480px){
   .nav-inner{padding:1rem 1.25rem;}
