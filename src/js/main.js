@@ -29,33 +29,9 @@
     });
   }
 
-  // ---- hero split interaction ----
+  // ---- hero stat counter ----
   var wrap = document.getElementById('hero');
   if (wrap) {
-    var panel = document.getElementById('engineerPanel');
-    var orb = document.getElementById('orb');
-    var hint = document.getElementById('hint');
-    if (!reduceMotion && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      panel.style.transition = 'clip-path .18s ease-out';
-      orb.style.transition = 'left .18s ease-out';
-      wrap.addEventListener('mousemove', function (e) {
-        var rect = wrap.getBoundingClientRect();
-        var pct = ((e.clientX - rect.left) / rect.width) * 100;
-        pct = Math.max(28, Math.min(72, pct));
-        panel.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
-        orb.style.left = pct + '%';
-        if (hint) hint.style.opacity = '0';
-      });
-      wrap.addEventListener('mouseleave', function () {
-        panel.style.clipPath = 'inset(0 0 0 50%)';
-        orb.style.left = '50%';
-        if (hint) hint.style.opacity = '1';
-      });
-    } else if (hint) {
-      hint.style.display = 'none';
-    }
-
-    // ---- stat counter ----
     var statEl = document.getElementById('statNum');
     if (statEl) {
       var target = 600;
