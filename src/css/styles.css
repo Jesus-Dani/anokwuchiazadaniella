@@ -67,6 +67,37 @@ header.site-nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bot
 .btn.outline{background:transparent;border:1px solid var(--border);color:var(--ink);}
 .btn.engineer{background:var(--green);color:var(--ink);}
 
+/* full-width CTA line — a whole sentence acting as one prominent link */
+.cta-line{
+  display:block;font-family:var(--serif);font-weight:600;
+  font-size:22px;line-height:1.4;text-align:center;
+  padding:3rem 0;color:var(--ink);border-top:1px solid var(--border);
+  margin-top:1rem;
+}
+.cta-line:hover{color:var(--blue);}
+
+/* Work With Me page */
+.wwm-section{padding:2.5rem 0;border-bottom:1px solid var(--border);}
+.wwm-section h2{font-family:var(--serif);font-weight:600;font-size:18px;margin:0 0 16px;}
+.wwm-body{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin:0 0 24px;}
+.wwm-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+.wwm-primary{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  padding:2.5rem;margin:2rem 0 3rem;
+}
+
+.video-thumb{position:relative;display:block;border-radius:10px;overflow:hidden;max-width:420px;}
+.video-thumb img{width:100%;display:block;}
+.video-thumb .play-badge{
+  position:absolute;bottom:14px;right:14px;
+  width:44px;height:44px;border-radius:50%;background:rgba(10,10,10,0.75);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;
+  padding-left:2px;
+}
+@media (max-width:720px){
+  .wwm-primary{padding:1.75rem;}
+}
+
 /* hero on mobile: stack into a single column (founder, photo, engineer follow
    natural DOM order), full-width blocks with real vertical spacing, and a
    clear three-tier type hierarchy per block — label > tagline > stat. */
